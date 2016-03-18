@@ -1,0 +1,61 @@
+.url{
+	font-weight: normal;
+    text-align:left;
+    padding:0px;	
+}
+
+p.text_box_label{
+	width: 200px;
+	text-aligh: left;
+	clear: none;
+}
+
+.text_box{
+	width: 450px;
+	text-aligh: right;
+	float: right;
+}
+
+.label_label{
+	text-align: left;
+	width: 200px;
+	font-weight: normal;
+	float: left;
+	
+}
+
+.check_box_label {
+	text-align: right;
+	width: 200px;
+	font-weight: normal;
+	float: left;
+}
+
+.check_box{
+	width: 40px;
+	height: 40px;
+	zoom: 1.0;
+}
+
+.submit_button{
+	padding-left: 0px;
+	float: right
+}
+
+ul.messages li.message.tages{
+	color: red;
+}
+
+.label_comment{
+	text-align: center;
+	
+}
+
+.fieldset { <!-- center -->
+	width: 800px;
+    margin: auto;
+    width: 60%;
+    border: 1px solid #73AD21;
+    padding: 10px;	
+    height: 300px;
+}
