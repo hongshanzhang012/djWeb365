@@ -112,7 +112,14 @@ If you later install additional libraries, you will need to go back to the inter
 
 """
 
+"""
+git
+git init #create git folder under project folder
+git status -s (long or short) 
+git add . #add project tree index. call it everytime the project tree changed
+git commit -m "commit messate" # m stands for commit message
 
+"""
 
 
 
