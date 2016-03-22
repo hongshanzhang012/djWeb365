@@ -114,10 +114,28 @@ If you later install additional libraries, you will need to go back to the inter
 
 """
 git
+https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
 git init #create git folder under project folder
 git status -s (long or short) 
 git add . #add project tree index. call it everytime the project tree changed
 git commit -m "commit messate" # m stands for commit message
+git commit -a # omit git add .
+git reset HEAD -- hello.py #unstage the file
+git reset --soft HEAD~ #undo last commit and them back on stage
+git reset --hard HEAD #discard all changes since last commit
+git rm file #remove file from index
+git stash file #save changes in somewhere, not commit the changes for now.
+
+git checkout -b iss53 #Switched to a new branch "iss53"
+git checkout master
+git merge hotfix
+git branch -d hotfix #Deleted branch hotfix (3a0874c).
+
+#remote link named as "origin", usr/pass: gmail, g2
+git remote add origin https://github.com/hongshanzhang012/djWeb365.git
+#this branch will be our master branch
+git push -u origin master
 
 """
 

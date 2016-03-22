@@ -2,7 +2,7 @@ from django import forms
 from register.models import Register
 
 class RegisterForm(forms.ModelForm):
-    url = forms.URLField(widget=forms.TextInput(attrs={'class' : 'text_box'}), max_length=128, label="url you want to register:")
+    url = forms.URLField(widget=forms.TextInput(attrs={'class' : 'text_box'}), max_length=128, label="url you want to watch:")
     email = forms.EmailField(widget=forms.TextInput(attrs={'class' : 'text_box'}), max_length=128, label="Send email to:")
 
     #required=False indicate form validation will not require it.

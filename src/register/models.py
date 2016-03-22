@@ -23,6 +23,15 @@ open system shell and navigate to project folder, run python manage.py createsup
 """
 
 class UrlContent(models.Model):
+    url=models.CharField(max_length=128, primary_key=True)
+    md5=models.CharField(max_length=32, default='', blank=True)
+    modified=models.DateTimeField(blank=True)    
+    
+    def __unicode__(self):
+        return self.url  
+    
+    
+class test(models.Model):
     url=models.CharField(max_length=128)
     md5=models.CharField(max_length=32, default='', blank=True)
     modified=models.DateTimeField(blank=True)    

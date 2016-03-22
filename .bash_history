@@ -132,3 +132,50 @@ source env/bin/activate
 cd src
 gunicorn djWeb365.wsgi
 exit
+source env/bin/activate
+cd src
+gunicorn djWeb365.wsgi
+python manage.py createsuperuser
+gunicorn djWeb365.wsgi
+git
+cd ..
+ls
+git init
+git add .
+git commit -a -m 'Initial commit of myproject'
+git config --global user.name "nick"
+git config --global user.email "hongshanzhang012@gmail.com"
+git commit -a -m 'Initial commit of myproject'
+git status -s
+git add .
+git status -s
+git status 
+git diff
+git status -s
+ls
+git commit -M "changed nothing after 1st commit"
+git commit -m "changed nothing after 1st commit"
+git status
+git commit -a
+git remote add origin https://github.com/hongshanzhang012/djWeb365.git
+git push -u origin master
+git fetch origin
+cd src
+gunicorn djWeb365.wsgi
+ls
+ls -l 
+exit
+cd src
+\gunicorn djWeb365.wsgi
+\gunicorn djWeb365.wsgi
+\gunicorn djWeb365.wsgi
+\gunicorn djWeb365.wsgi
+psql
+psql -d urlcrawler 
+psql -d urlcrawler postgres_nick
+sudo su - postgres_nick
+exit
+cd src
+gunicorn djWeb365.wsgi
+gunicorn djWeb365.wsgi
+exit
