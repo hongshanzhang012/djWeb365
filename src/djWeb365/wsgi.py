@@ -36,11 +36,14 @@ our solution is: 3) +4) gunicorn + nginx
 nginx +uwsgi: webserver (http serfver) serve static content
 gunicorn: app server, serve dynamic content
 
-using the following command to start gunicorn
-navigate to project folder where manage.py resides.
+#using the following command to start gunicorn
+#navigate to project folder where manage.py resides.
 gunicorn djWeb365.wsgi
+#to stop service: ctrl+c
 
-to stop service: ctrl+c
+#call gunicorn in background
+gunicorn djWeb365.wsgi &
+to stop service: use process manager
 
 """
 
@@ -50,8 +53,11 @@ config nginx
 
 under folder in /etc/nginx/sites-available/, create file djWeb365:
 server {
-    server_name 127.0.0.1;
-
+    server_name 10.1.1.82;
+    listen       8080; #80 is occupied by ipsw already
+    server_name  url365.com www.url365.com;
+    root         /var/www/djWeb365/;
+    
     access_log off;
 
     location /static/ {
@@ -59,7 +65,7 @@ server {
     }
 
     location / {
-        proxy_pass http://127.0.0.1:8000;
+        proxy_pass http://10.1.1.82:8000;
         proxy_set_header X-Forwarded-Host $server_name;
         proxy_set_header X-Real-IP $remote_addr;
         add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
@@ -83,11 +89,12 @@ web applications should run as system users with limited privileges
 in my case, I use sgroup 'webapps' and user 'djWeb365'
 $ sudo groupadd --system webapps
 $ sudo useradd --system --gid webapps --shell /bin/bash --home /var/www/djWeb365 djWeb365
-owner djWeb365 and group owner 'nick' has full access to folder djWeb365
+#owner djWeb365 and group owner 'nick' has full access to folder djWeb365
 sudo chown -R djWeb365:nick /var/www/djWeb365/
 sudo chmod -R 775 /var/www/djWeb365
 
-install virtualenv on specified python version, mine is python 2.7.11
+#install virtualenv on specified python version, mine is python 2.7.11
+#****************install env*************************#
 virtualenv -p /usr/local/lib/python2.7.11/bin/python env
 
 sudo su - djWeb365
@@ -96,6 +103,10 @@ activate the virtualenv and then:
 pip install django
 pip install psycopg2 #django interface to postgre db 
 pip install gunicorn
+
+#****************or clone env*************************#
+git clone https://github.com/hongshanzhang012/djWeb365.git djWeb365
+
 then inside src directory run gunicorn djWeb365.wsgi, ctrl+c to exit
 
 gunicorn djWeb365.wsgi:application --env DJANGO_SETTINGS_MODULE='djWeb365.settings.development'
@@ -115,6 +126,8 @@ If you later install additional libraries, you will need to go back to the inter
 """
 git
 https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+#install git
+sudo apt-get install git
 
 git init #create git folder under project folder
 git status -s (long or short) 
@@ -136,6 +149,9 @@ git branch -d hotfix #Deleted branch hotfix (3a0874c).
 git remote add origin https://github.com/hongshanzhang012/djWeb365.git
 #this branch will be our master branch
 git push -u origin master
+
+#clone a copy on deploy server
+git clone origin djweb365
 
 """
 

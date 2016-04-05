@@ -179,3 +179,16 @@ cd src
 gunicorn djWeb365.wsgi
 gunicorn djWeb365.wsgi
 exit
+source env/bin/activate
+git add .
+git commit -m "first release v1.0"
+git push -u origin master
+exit
+cd src
+gunicorn djWeb365.wsgi
+gunicorn djWeb365.wsgi
+gunicorn djWeb365.wsgi
+ls
+cd src
+ls
+git clone https://github.com/django/django/tree/master/django/contrib/admin

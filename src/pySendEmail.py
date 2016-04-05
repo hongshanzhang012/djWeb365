@@ -7,6 +7,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from os import sys
+from setuptools.package_index import HREF
 
 #def sendEmail(to, gmail_user, gmail_pwd):
 def sendEmail(to, url, content_change, server_is_down):
@@ -24,7 +25,7 @@ def sendEmail(to, url, content_change, server_is_down):
     
     txt=""
     if content_change == True:
-        txt=txt+"The content of the url you are monitoring has changed.\n"
+        txt=txt+"The content of the url has changed.\n"
         
     if server_is_down == True:
         txt=txt+"Warning! The server is down right now. \n"
@@ -40,9 +41,21 @@ def sendEmail(to, url, content_change, server_is_down):
     """
     html=html+txt+"<br>"
     
+    #hard code server address, need a server name
+    #href='<a href="http://10.1.1.82:81/delete?email='+to+'&url='+url+'">Click here to stop monitoring this url</a>'
+    #encode to utf8
+    
+    #data1 = to.encode('utf8')  # encoded to UTF-8
+    
+    href='<a href="http://127.0.0.1/delete/?email='+to+'&url='+url+'">Click here to stop monitoring this url</a>'
+    
     html=html+"<br> <a href="+url+">"+url+"</a>"
     html = html+"""\
          </p>
+         </br>
+    """
+    html=html+href
+    html=html+"""
          </br>
          <p>Hongshan zhang</p>
       </body>

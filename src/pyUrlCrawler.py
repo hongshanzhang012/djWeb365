@@ -12,7 +12,7 @@ import datetime
 
 #run hourly from crontab
 #crontab -e
-#29 * * * * python /media/nick/Data/my/workspace/djWeb365/src/pyUrlCrawler.py
+#29 * * * * python /var/www/djWeb365/src/pyUrlCrawler.py
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -60,7 +60,7 @@ def pyUrlCrawler():
                     cur3=conn.cursor()
                     cur3.execute("""INSERT INTO register_urlcontent VALUES (%s,%s,%s)""",[url, md5_new,datetime.datetime.now()])
                     cur3.close()
-                elif data[1]!=md5_new: #content changed, should be data[1]
+                elif data[2]!=md5_new: #content changed, should be data[1]
                     cur3=conn.cursor()
                     cur3.execute ("""
                        UPDATE register_urlcontent

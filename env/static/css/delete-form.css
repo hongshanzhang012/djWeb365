@@ -1,0 +1,33 @@
+.email{
+	text-align: left;
+	font-weight: normal;
+}
+.label{
+	text-align: left;
+	width: 200px;
+	font-weight: normal;
+	
+}
+
+.url{
+	font-weight: normal;
+    text-align:left;
+    padding:0px;	
+}
+ul.messages li.message.tages{
+	color: red;
+}
+
+.submit_button{
+	padding-left: 0px;
+	float: right
+}
+
+.fieldset { <!-- center -->
+	width: 800px;
+    margin: auto;
+    width: 60%;
+    border: none;
+    padding: 10px;	
+    height: 300px;
+}

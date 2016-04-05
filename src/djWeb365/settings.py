@@ -82,13 +82,20 @@ enter the following commands in console to create db
 sudo su - postgres (change linux to user postgres, its password has not been updated yet)
 createdb urlcrawler
 psql/postgres
-create USER postgres_nick with password postgres_nick;#semi colon is important
+
+CREATE USER postgres_nick WITH PASSWORD 'postgres_nick';#semi colon is important
 alter ROLE postgres_nick WITH LOGIN;
 GRANT ALL PRIVILEGES ON DATABASE urlcrawler TO postgres_nick; 
 \q
-remember to migrate your db before use
+#remember to migrate your db before use
+python manage.py makemigrations
+python manage.py migrate
 
-python manage.py createsuperuser
+git clone https://github.com/rthalley/dnspython
+cd dnspython/
+python setup.py install
+
+python manage.py createsuperuser #use env to use the correct python
 #db superuser created as nick, nick, hongshanzhang012@gmail.com
 
 In order for Django to be able to talk to our database we need to install a backend for PostgreSQL

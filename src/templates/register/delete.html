@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>url365</title>
+		<title>url365-list</title>
 
 		<!-- Meta tags describe a page's content;  -->
 		<!-- the meta tags don't appear on the page itself, --> 
@@ -22,7 +22,7 @@
         <link href="{% static "css/style-responsive.css" %}" rel="stylesheet">
         
         <!-- ?os.urandom(23423) is to make django does not cache static files -->
-        <link href="{% static "css/register-form.css?os.urandom(1341273)" %}" rel="stylesheet">
+        <link href="{% static "css/delete-form.css?os.urandom(101273)" %}" rel="stylesheet">
         {% block style %}{% endblock style %}
 		
 	</head>
@@ -39,70 +39,39 @@
 		<!-- id="page_form" IDs are good when you plan on doing some sort of client-side work on the element, as an element that has an ID can easily and quickly be retrieved by Javascript-->
 		
 		
-		<!-- {{form.title}} this is reserved parameter-->
+		<!-- {{form.title}} this is reserved parameter, action is the url-->
 		
 
-		<form id="register_form" method="post" action="/register/">
+		<form id="delete_form" method="post" action="/delete/">
 		
 			<!-- Cross-Site Request Forgery (CSRF)token, it is required by Django -->
 			{% csrf_token %}
 			
-			<!-- {% for hidden in form.hidden_fields %} -->
-				<!-- {{ hidden }} -->
-			<!-- {% endfor %} -->
-			
-			<!-- {% for field in form.visible_fields %}  -->
-				<!-- {{ field.errors }}  -->
-				<!-- {{ field.help_text}} -->
-				<!-- {{ field }} -->
-			<!-- {% endfor %} -->
 			<div class="fieldset" >
+				<div class="email">			
+				{{form.email}}	
+				{{ form.email.label }}:{{form.email.value}}
+				
+				</div>
+
+				</br>
+				<div class="label">
+					<label >The urls you are monitoring:</label>
+				</div>
+
+
+				</br>
 				<div class="url">
-					{% if form.url.errors %}
-						<small>{{form.url.errors}}</small>
-					{%else%}
-						<p>&nbsp</p>
-					{% endif %}
-					
-					{{form.url}}
-					<p><label class="text_box_label" for="{{form.url.label}}">{{form.url.label}}</label></p>
-					
-				</div>
-
-				<div class="email">				
-					{% if form.email.errors %}
-						<small>{{form.email.errors}}</small>
-					{%else%}
-						<p>&nbsp</p>
-					{% endif %}
-					
-					{{form.email}}
-					<p><label class="text_box_label" for="{{form.email.label}}">{{form.email.label}}</label></p>
+					{{form.urls}}
 				</div>
 
 				</br>
-				</br>
-				</br>
-				<label class="label_label">Notify me when there is:</label>
-				</br>
-				</br>
 				
-				<label class="check_box_label" for="{{form.content_change.label}}">{{form.content_change.label}}</label>
-				{{form.content_change}}
-				{{form.content_change.errors}}
-				</br>
-				
-				<label class="check_box_label" for="{{form.server_is_down.label}}">{{form.server_is_down.label}}</label>
-				{{form.server_is_down}}
-							
-				</br>
-				</br>
-				</br>
-				
-				
-				<input type="submit" name="submit" value="Submit" class="submit_button"/>
+				<!-- input type="submit" name="save" value="Save Items" /> -->
+				<input type="submit" name="delete" value="Delete url" class="submit_button"/>
 				</br>
 
+				{{ form.non_field_errors }}
 				{% if messages %}
 				<ul class="messages">
 				    {% for message in messages %}
@@ -113,10 +82,9 @@
 					<p>&nbsp</p>
 				{% endif %}
 				</br>
-				<label class="label_comment">Keep an eye on a url and notify you when there is content change or, when the server is down.</label>
-		
 
 			</div>
+			
 		</form>
 
 
