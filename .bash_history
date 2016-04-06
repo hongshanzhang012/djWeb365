@@ -192,3 +192,8 @@ ls
 cd src
 ls
 git clone https://github.com/django/django/tree/master/django/contrib/admin
+ls
+git add .
+git commit -m "second release, new feature: provide delete feature in email"
+git push -u origin master
+exit

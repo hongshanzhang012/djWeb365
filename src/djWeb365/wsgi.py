@@ -38,12 +38,16 @@ gunicorn: app server, serve dynamic content
 
 #using the following command to start gunicorn
 #navigate to project folder where manage.py resides.
-gunicorn djWeb365.wsgi
+gunicorn djWeb365.wsgi #use virtual env
 #to stop service: ctrl+c
 
 #call gunicorn in background
 gunicorn djWeb365.wsgi &
 to stop service: use process manager
+
+reload app:
+ps -xa | grep gunicorn
+kill -HUP 23435
 
 """
 
@@ -107,7 +111,7 @@ pip install gunicorn
 #****************or clone env*************************#
 git clone https://github.com/hongshanzhang012/djWeb365.git djWeb365
 
-then inside src directory run gunicorn djWeb365.wsgi, ctrl+c to exit
+then inside src directory run gunicorn djWeb365.wsgi, ctrl+c to exit #use virtual env
 
 gunicorn djWeb365.wsgi:application --env DJANGO_SETTINGS_MODULE='djWeb365.settings.development'
 
@@ -151,7 +155,8 @@ git remote add origin https://github.com/hongshanzhang012/djWeb365.git
 git push -u origin master
 
 #clone a copy on deploy server
-git clone origin djweb365
+git clone origin djWeb365
+git pull origin djWeb365
 
 """
 

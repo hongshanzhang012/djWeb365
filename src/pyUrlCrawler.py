@@ -60,7 +60,7 @@ def pyUrlCrawler():
                     cur3=conn.cursor()
                     cur3.execute("""INSERT INTO register_urlcontent VALUES (%s,%s,%s)""",[url, md5_new,datetime.datetime.now()])
                     cur3.close()
-                elif data[2]!=md5_new: #content changed, should be data[1]
+                elif data[1]!=md5_new: #content changed, should be data[1]
                     cur3=conn.cursor()
                     cur3.execute ("""
                        UPDATE register_urlcontent

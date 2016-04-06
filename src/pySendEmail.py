@@ -8,6 +8,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from os import sys
 from setuptools.package_index import HREF
+SERVER_IPADDRESS = "http://10.1.1.82:8080/"
+#SERVER_IPADDRESS = "http://127.0.0.1/"
 
 #def sendEmail(to, gmail_user, gmail_pwd):
 def sendEmail(to, url, content_change, server_is_down):
@@ -47,7 +49,7 @@ def sendEmail(to, url, content_change, server_is_down):
     
     #data1 = to.encode('utf8')  # encoded to UTF-8
     
-    href='<a href="http://127.0.0.1/delete/?email='+to+'&url='+url+'">Click here to stop monitoring this url</a>'
+    href='<a href="'+ SERVER_IPADDRESS+'delete/?email='+to+'&url='+url+'">Click here to stop monitoring this url</a>'
     
     html=html+"<br> <a href="+url+">"+url+"</a>"
     html = html+"""\
